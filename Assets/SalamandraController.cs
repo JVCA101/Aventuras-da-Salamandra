@@ -12,12 +12,15 @@ public class SalamandraController : MonoBehaviour
     private bool jump;
     private float ySpeed;
 
+    private Vector2 direction;
+
     // Start is called before the first frame update
     void Start()
     {
         ground = transform.position.y;
         jump = false;
         ySpeed = 0;
+        direction = Vector2.right;
     }
 
     // Update is called once per frame
@@ -34,7 +37,17 @@ public class SalamandraController : MonoBehaviour
         }
 
         float dx = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
-        
+        if(dx<0)
+        {
+            direction.x = -1;
+            GetComponent<SpriteRenderer>().flipX = true;
+        }
+        else if(dx>0)
+        {
+            direction.x = 1;
+            GetComponent<SpriteRenderer>().flipX = false;
+        }
+
         float xMax = Camera.main.transform.position.x + Camera.main.orthographicSize * Camera.main.aspect;
         float xMin = xMax - 2*(xMax - Camera.main.transform.position.x);
         if(transform.position.x + dx <= xMin || transform.position.x + dx >= xMax)
