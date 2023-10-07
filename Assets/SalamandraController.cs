@@ -9,18 +9,25 @@ public class SalamandraController : MonoBehaviour
     [SerializeField] private float gravity;
 
     private float ground;
+    private float playerGround;
     private bool jump;
     private float ySpeed;
 
     private Vector2 direction;
+    private Animator animator;
+    private SpriteRenderer spriteRenderer;
 
     // Start is called before the first frame update
     void Start()
     {
         ground = transform.position.y;
+        playerGround = ground;
         jump = false;
         ySpeed = 0;
+
         direction = Vector2.right;
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -40,13 +47,18 @@ public class SalamandraController : MonoBehaviour
         if(dx<0)
         {
             direction.x = -1;
-            GetComponent<SpriteRenderer>().flipX = true;
+            spriteRenderer.flipX = true;
         }
         else if(dx>0)
         {
             direction.x = 1;
-            GetComponent<SpriteRenderer>().flipX = false;
+            spriteRenderer.flipX = false;
         }
+
+        if(Mathf.Abs(dx) > 0)
+            animator.SetBool("isWalking", true);
+        else
+            animator.SetBool("isWalking", false);
 
         float xMax = Camera.main.transform.position.x + Camera.main.orthographicSize * Camera.main.aspect;
         float xMin = xMax - 2*(xMax - Camera.main.transform.position.x);
@@ -58,13 +70,31 @@ public class SalamandraController : MonoBehaviour
 
     void Jump()
     {
-        if(transform.position.y <= ground)
+        if(transform.position.y <= playerGround)
         {
-            transform.position.Set(transform.position.x, ground, 0);
+            if(transform.position.y <= ground)
+                playerGround = ground;
+            
+            transform.position.Set(transform.position.x, playerGround, 0);
             jump = false;
             ySpeed = 0;
         }
         else
             ySpeed -= gravity * Time.deltaTime;
+    }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if(other.gameObject.tag == "Platform" && ySpeed < 0)
+        {
+            playerGround = other.transform.position.y;
+            playerGround += transform.localScale.y*0.5f + other.transform.localScale.y*0.5f;
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D other)
+    {
+        playerGround = ground;
+        jump = true;
     }
 }
