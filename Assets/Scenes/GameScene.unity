@@ -227,8 +227,9 @@ GameObject:
   - component: {fileID: 1805593313}
   - component: {fileID: 1805593312}
   - component: {fileID: 1805593311}
+  - component: {fileID: 1805593315}
   m_Layer: 0
-  m_Name: Salamandra-parada
+  m_Name: Salamandra
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -248,7 +249,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   impulse: 10
-  gravity: 10
+  gravity: 12
 --- !u!61 &1805593312
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -281,18 +282,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.53542364, y: -0.9943582}
+  m_Offset: {x: 0.55758405, y: -0.47358978}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 8, y: 8}
+    oldSize: {x: 5.06, y: 2.85}
     newSize: {x: 8, y: 8}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.4106505, y: 2.186825}
+  m_Size: {x: 1.8594251, y: 1.1452882}
   m_EdgeRadius: 0
 --- !u!212 &1805593313
 SpriteRenderer:
@@ -335,7 +336,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 03a3fb5a5dcfe25438e6233d8c4b9756, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f037dc3f6084e814688126b6bed1eb8b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -356,11 +357,32 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.91, y: -2.31, z: 0}
-  m_LocalScale: {x: 0.47161543, y: 0.47161543, z: 0.47161543}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1805593315
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1805593310}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2139d592f1b1daa448fe471e46142e1e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
