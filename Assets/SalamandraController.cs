@@ -8,7 +8,7 @@ public class SalamandraController : MonoBehaviour
     [SerializeField] private float impulse;
     [SerializeField] private float gravity;
 
-    private float ground;
+    public float ground;
     private float playerGround;
     private bool jump;
     private float ySpeed;
