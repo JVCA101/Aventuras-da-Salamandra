@@ -88,7 +88,8 @@ public class SalamandraController : MonoBehaviour
         if(other.gameObject.tag == "Platform" && ySpeed < 0)
         {
             playerGround = other.transform.position.y;
-            playerGround += transform.localScale.y*0.5f + other.transform.localScale.y*0.5f;
+            playerGround += transform.localScale.y*0.5f + other.transform.localScale.y;
+            Debug.Log("Colidiu");
         }
     }
 
