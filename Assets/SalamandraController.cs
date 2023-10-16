@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class SalamandraController : MonoBehaviour
 {
-    [SerializeField] private float speed;
+    public float speed;
     [SerializeField] private float impulse;
     [SerializeField] private float gravity;
+    public bool player1;
 
     public float ground;
     private float playerGround;
@@ -43,7 +44,14 @@ public class SalamandraController : MonoBehaviour
             ySpeed = impulse;
         }
 
-        float dx = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+        float dx = 0;
+        if(player1)
+            dx = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+        else if(Input.GetKey(KeyCode.J))
+            dx = -speed * Time.deltaTime;
+        else if(Input.GetKey(KeyCode.L))
+            dx = speed * Time.deltaTime;
+        
         if(dx<0)
         {
             direction.x = -1;
