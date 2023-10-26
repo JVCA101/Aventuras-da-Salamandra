@@ -41,6 +41,7 @@ public class SalamandraController : MonoBehaviour
         else if(Input.GetKeyDown(KeyCode.Space))
         {
             jump = true;
+            animator.SetBool("isJumping", true);
             ySpeed = impulse;
         }
 
@@ -85,6 +86,7 @@ public class SalamandraController : MonoBehaviour
             
             transform.position.Set(transform.position.x, playerGround, 0);
             jump = false;
+            animator.SetBool("isJumping", false);
             ySpeed = 0;
         }
         else
@@ -105,5 +107,6 @@ public class SalamandraController : MonoBehaviour
     {
         playerGround = ground;
         jump = true;
+        animator.SetBool("isJumping", true);
     }
 }
