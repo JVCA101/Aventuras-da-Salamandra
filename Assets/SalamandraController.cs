@@ -7,7 +7,9 @@ public class SalamandraController : MonoBehaviour
     public float speed;
     [SerializeField] private float impulse;
     [SerializeField] private float gravity;
-    public bool player1;
+    private static bool player1;
+
+
 
     public float ground;
     private float playerGround;
@@ -25,6 +27,11 @@ public class SalamandraController : MonoBehaviour
         playerGround = ground;
         jump = false;
         ySpeed = 0;
+
+        if(GameObject.FindGameObjectsWithTag("Player").Length > 1)
+            player1 = false;
+        else
+            player1 = true;
 
         direction = Vector2.right;
         animator = GetComponent<Animator>();

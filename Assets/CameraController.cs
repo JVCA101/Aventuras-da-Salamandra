@@ -91,17 +91,21 @@ public class CameraController : MonoBehaviour
 
     void FollowPlayerCenteredInOneSideX()
     {
-        //* FIXME :nao deixa a camera ir apos as bordas
-
-        // float cameraLeft = transform.position.x - halfWidth;
+        float cameraLeft = transform.position.x - halfWidth;
+        float posXMin = leftEdge.position.x + halfWidth;
+        float posXMax = rightEdge.position.x - halfWidth;
+        
+        
         float posX;
         if(players[0].GetComponent<SpriteRenderer>().flipX == false)
             posX = player.position.x + halfWidth/2f;
         else
             posX = player.position.x - halfWidth/2f;
         
-        // if(posX < leftEdge.position.x)
-        //     posX = leftEdge.position.x + halfWidth;
+        if(posX < posXMin)
+            posX = posXMin;
+        else if(posX > posXMax)
+            posX = posXMax;
 
         float x = Mathf.Lerp(transform.position.x, posX, speedX * Time.deltaTime);
         float y = transform.position.y;
