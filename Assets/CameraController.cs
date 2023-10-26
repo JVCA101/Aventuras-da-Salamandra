@@ -17,26 +17,29 @@ public enum CameraTypeY
 
 public class CameraController : MonoBehaviour
 {
-    [SerializeField] private float speed;
     [SerializeField] private CameraTypeX cameraTypeX;
     [SerializeField] private CameraTypeY cameraTypeY;
     [SerializeField] private Transform leftEdge;
     [SerializeField] private Transform rightEdge;
 
+    private float speedX;
+    private float speedY;
     private GameObject[] players;
     private Transform player;
     private float halfWidth;
     private float halfHeight;
-
     private float t = 0;
     private int cameraFrame = 0;
 
     // Start is called before the first frame update
     void Start()
     {
+        speedX = 1.8f;
+        speedY = 4f;
+
         players = GameObject.FindGameObjectsWithTag("Player");
-        // player = players[0].transform;
         player = players[0].GetComponent<Transform>();
+
         halfHeight = Camera.main.orthographicSize;
         halfWidth = halfHeight * Camera.main.aspect;
     }
@@ -88,18 +91,19 @@ public class CameraController : MonoBehaviour
 
     void FollowPlayerCenteredInOneSideX()
     {
-        // Lerp
+        //* FIXME :nao deixa a camera ir apos as bordas
+
+        // float cameraLeft = transform.position.x - halfWidth;
         float posX;
         if(players[0].GetComponent<SpriteRenderer>().flipX == false)
-        {
             posX = player.position.x + halfWidth/2f;
-        }
         else
-        {
             posX = player.position.x - halfWidth/2f;
-        }
-        float x = Mathf.Lerp(transform.position.x, posX, speed * Time.deltaTime);
         
+        // if(posX < leftEdge.position.x)
+        //     posX = leftEdge.position.x + halfWidth;
+
+        float x = Mathf.Lerp(transform.position.x, posX, speedX * Time.deltaTime);
         float y = transform.position.y;
         float z = transform.position.z;
         transform.position = new Vector3(x, y, z);
@@ -108,8 +112,12 @@ public class CameraController : MonoBehaviour
     void FollowPlayerY()
     {
         float x = transform.position.x;
-        // float y = Mathf.Clamp(player.position.y, yMin.position.y + halfHeight, yMax.position.y - halfHeight);
-        float y = player.position.y + halfHeight/2f;
+        float y;
+        float yMin = leftEdge.position.y;
+        if(transform.position.y < yMin + halfHeight)
+            y = yMin + halfHeight;
+        else
+            y = Mathf.Lerp(transform.position.y, player.position.y + halfHeight/2f, speedY * Time.deltaTime);
         float z = transform.position.z;
         transform.position = new Vector3(x, y, z);
     }
@@ -121,15 +129,10 @@ public class CameraController : MonoBehaviour
         float regionUp = cameraDown + halfHeight * 1.5f;
         float dy = 0;
         if(player.transform.position.y < regionDown)
-        {
             dy = player.transform.position.y - regionDown;
-        }
         else if(player.transform.position.y > regionUp)
-        {
             dy = player.transform.position.y - regionUp;
-        }
         float x = transform.position.x;
-        // float y = Mathf.Clamp(transform.position.y + dy, DownEdge.position.y + halfHeight, UpEdge.position.y - halfHeight);
         float y = transform.position.y + dy;
         float z = transform.position.z;
         transform.position = new Vector3(x, y, z);
