@@ -365,7 +365,7 @@ Transform:
   m_GameObject: {fileID: 235671560}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.728, y: -5, z: -9.958865}
+  m_LocalPosition: {x: -14.645, y: -5, z: -9.958865}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1262,7 +1262,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skySpeed: 1
   leftEdge: {fileID: 235671561}
-  skySprite: {fileID: 0}
 --- !u!1 &1654405898
 GameObject:
   m_ObjectHideFlags: 0
@@ -1796,7 +1795,7 @@ Transform:
   m_GameObject: {fileID: 2033114364}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 54.2, y: -1.1514082, z: 7.8614106}
+  m_LocalPosition: {x: 135, y: -1.1514082, z: 7.8614106}
   m_LocalScale: {x: 6.3054047, y: 6.3054047, z: 6.3054047}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1848,7 +1847,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 25.6, y: 3}
+  m_Size: {x: 51.2, y: 3}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

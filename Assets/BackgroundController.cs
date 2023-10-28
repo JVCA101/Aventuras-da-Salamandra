@@ -6,7 +6,6 @@ public class BackgroundController : MonoBehaviour
 {
     [SerializeField] private float skySpeed;
     [SerializeField] private Transform leftEdge;
-    [SerializeField] private GameObject skySprite;
 
     private Transform skyObj;
     private float xBegin;
@@ -14,7 +13,6 @@ public class BackgroundController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // skySprite.SetActive(true);
         skyObj = transform.GetChild(1);
         xBegin = skyObj.transform.position.x;
     }
