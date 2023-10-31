@@ -17,9 +17,11 @@ public class ScenesController : MonoBehaviour
         
     }
 
-    public void StartGame()
+    public void StartGame(bool player2)
     {
         SceneManager.LoadScene("GameScene");
+        // playerPrefs
+        PlayerPrefs.SetInt("player2", player2 ? 1 : 0);
     }
 
     public void MainTitle()

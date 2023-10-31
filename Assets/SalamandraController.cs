@@ -9,8 +9,6 @@ public class SalamandraController : MonoBehaviour
     [SerializeField] private float gravity;
     [SerializeField] private bool player1;
 
-
-
     public float ground;
     private float playerGround;
     private bool jump;
@@ -27,15 +25,12 @@ public class SalamandraController : MonoBehaviour
         playerGround = ground;
         jump = false;
         ySpeed = 0;
-
-        // if(GameObject.FindGameObjectsWithTag("Player").Length > 1)
-        //     player1 = false;
-        // else
-        //     player1 = true;
-
         direction = Vector2.right;
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        if(PlayerPrefs.GetInt("player2") == 0 && !player1)
+            gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -45,7 +40,7 @@ public class SalamandraController : MonoBehaviour
         {
             Jump();
         }
-        else if(Input.GetKeyDown(KeyCode.Space))
+        else if((player1 && Input.GetKeyDown(KeyCode.Space)) || (!player1 && Input.GetKeyDown(KeyCode.I)))
         {
             jump = true;
             animator.SetBool("isJumping", true);
@@ -102,10 +97,11 @@ public class SalamandraController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.gameObject.tag == "Platform" && ySpeed < 0)
+        if(other.gameObject.tag == "Platform" && ySpeed <= 0)
         {
             playerGround = other.transform.position.y;
-            playerGround += transform.localScale.y*0.5f + other.transform.localScale.y*0.5f;
+            // playerGround += transform.localScale.y*0.5f + other.transform.localScale.y*0.5f;
+            playerGround += other.transform.localScale.y*0.5f;
             Debug.Log("Colidiu");
         }
     }
@@ -116,4 +112,5 @@ public class SalamandraController : MonoBehaviour
         jump = true;
         animator.SetBool("isJumping", true);
     }
+
 }

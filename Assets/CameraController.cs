@@ -101,11 +101,8 @@ public class CameraController : MonoBehaviour
             posX = player.position.x + halfWidth/2f;
         else
             posX = player.position.x - halfWidth/2f;
-        
-        if(posX < posXMin)
-            posX = posXMin;
-        else if(posX > posXMax)
-            posX = posXMax;
+
+        posX = Mathf.Clamp(posX, posXMin, posXMax);
 
         float x = Mathf.Lerp(transform.position.x, posX, speedX * Time.deltaTime);
         float y = transform.position.y;
@@ -116,9 +113,9 @@ public class CameraController : MonoBehaviour
     void FollowPlayerY()
     {
         float x = transform.position.x;
-        float y;
         float yMin = leftEdge.position.y;
-        if(transform.position.y < yMin + halfHeight)
+        float y;
+        if(transform.position.y <= yMin + halfHeight && player.position.y <= yMin + halfHeight/2f)
             y = yMin + halfHeight;
         else
             y = Mathf.Lerp(transform.position.y, player.position.y + halfHeight/2f, speedY * Time.deltaTime);
@@ -161,31 +158,23 @@ public class CameraController : MonoBehaviour
 
 
     // 2 Players
-    void players2()
+    void Players2()
     {
         // X
         float x = 0;
+        float y = 0;
         for(int i = 0; i < players.Length; i++)
         {
             x += players[i].transform.position.x;
+            y += players[i].transform.position.y;
         }
         x /= players.Length;
+        y /= players.Length;
         x = Mathf.Clamp(x, leftEdge.position.x + halfWidth, rightEdge.position.x - halfWidth);
+        y = Mathf.Clamp(y, leftEdge.position.y + halfHeight, rightEdge.position.y - halfHeight);
 
-        // Y
-        float cameraDown = transform.position.y - halfHeight;
-        float regionDown = cameraDown + halfHeight * 0.5f;
-        float regionUp = cameraDown + halfHeight * 1.5f;
-        float dy = 0;
-        if(player.transform.position.y < regionDown)
-        {
-            dy = player.transform.position.y - regionDown;
-        }
-        else if(player.transform.position.y > regionUp)
-        {
-            dy = player.transform.position.y - regionUp;
-        }
-        float y = transform.position.y + dy;
+        x = Mathf.Lerp(transform.position.x, x, speedX * Time.deltaTime);
+        y = Mathf.Lerp(transform.position.y, y, speedY * Time.deltaTime);
 
         float z = transform.position.z;
         transform.position = new Vector3(x, y, z);
@@ -194,8 +183,7 @@ public class CameraController : MonoBehaviour
     void Camera2()
     {
         Debug.Log("2 players");
-        players2();
-        BoxCenteredY();
+        Players2();
     }
 
 
@@ -210,6 +198,8 @@ public class CameraController : MonoBehaviour
         {
             Camera2();
         }
+        else
+            Application.Quit();
     }
 
 }
