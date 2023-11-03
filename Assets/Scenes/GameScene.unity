@@ -6794,6 +6794,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Morceguinho
       objectReference: {fileID: 0}
+    - target: {fileID: 4142510372815985830, guid: 31f00352c53531c409415c36b2056c7c, type: 3}
+      propertyPath: m_Radius
+      value: 0.5404149
+      objectReference: {fileID: 0}
+    - target: {fileID: 4142510372815985830, guid: 31f00352c53531c409415c36b2056c7c, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.17153609
+      objectReference: {fileID: 0}
+    - target: {fileID: 4142510372815985830, guid: 31f00352c53531c409415c36b2056c7c, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.115798
+      objectReference: {fileID: 0}
     - target: {fileID: 5824420621200046242, guid: 31f00352c53531c409415c36b2056c7c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.8378673
@@ -6833,10 +6845,6 @@ PrefabInstance:
     - target: {fileID: 5824420621200046242, guid: 31f00352c53531c409415c36b2056c7c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8375695858109988696, guid: 31f00352c53531c409415c36b2056c7c, type: 3}
-      propertyPath: flyingSpeed
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

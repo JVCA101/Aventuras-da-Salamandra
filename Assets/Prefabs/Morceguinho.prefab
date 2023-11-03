@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 5164229834255490946}
   - component: {fileID: 4188084834379001022}
   - component: {fileID: 8375695858109988696}
+  - component: {fileID: 4142510372815985830}
   m_Layer: 0
   m_Name: Morceguinho
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -119,3 +120,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92a1d2f796747f64ba73ee821e93db60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flyingSpeed: 2
+  oscilationSpeed: 2
+  isFacingLeft: 1
+--- !u!58 &4142510372815985830
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3168604255144077547}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.12839508, y: 0.38518512}
+  serializedVersion: 2
+  m_Radius: 0.625

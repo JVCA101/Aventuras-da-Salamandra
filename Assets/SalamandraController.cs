@@ -110,7 +110,10 @@ public class SalamandraController : MonoBehaviour
         }
         if(other.gameObject.tag == "Enemy")
         {
+            Debug.Log("Colidiu");
             damageTakenSound.Play();
+            Application.Quit();
+            UnityEditor.EditorApplication.isPlaying = false;
         }
     }
 
