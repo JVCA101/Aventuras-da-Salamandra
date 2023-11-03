@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class SalamandraController : MonoBehaviour
 {
-    public float speed;
+    [SerializeField] private float speed;
     [SerializeField] private float impulse;
     [SerializeField] private float gravity;
     [SerializeField] private bool player1;
+    private AudioSource damageTakenSound;
+    private AudioSource jumpSound;
+
 
     public float ground;
     private float playerGround;
@@ -28,6 +31,8 @@ public class SalamandraController : MonoBehaviour
         direction = Vector2.right;
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        damageTakenSound = GetComponents<AudioSource>()[0];
+        jumpSound = GetComponents<AudioSource>()[1];
 
         if(PlayerPrefs.GetInt("player2") == 0 && !player1)
             gameObject.SetActive(false);
@@ -42,6 +47,7 @@ public class SalamandraController : MonoBehaviour
         }
         else if((player1 && Input.GetKeyDown(KeyCode.Space)) || (!player1 && Input.GetKeyDown(KeyCode.I)))
         {
+            jumpSound.Play();
             jump = true;
             animator.SetBool("isJumping", true);
             ySpeed = impulse;
@@ -99,10 +105,12 @@ public class SalamandraController : MonoBehaviour
     {
         if(other.gameObject.tag == "Platform" && ySpeed <= 0)
         {
-            playerGround = other.transform.position.y;
+            playerGround = other.transform.position.y + other.transform.localScale.y*0.5f;
             // playerGround += transform.localScale.y*0.5f + other.transform.localScale.y*0.5f;
-            playerGround += other.transform.localScale.y*0.5f;
-            Debug.Log("Colidiu");
+        }
+        if(other.gameObject.tag == "Enemy")
+        {
+            damageTakenSound.Play();
         }
     }
 
