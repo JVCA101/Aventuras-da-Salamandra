@@ -3064,10 +3064,6 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 3167359579820145247, guid: 13cc763515d525f47bca71501d090629, type: 3}
-      propertyPath: healthController
-      value: 
-      objectReference: {fileID: 1174196580}
     - target: {fileID: 3851239573639719827, guid: 13cc763515d525f47bca71501d090629, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.7
