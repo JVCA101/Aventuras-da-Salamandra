@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-// using UnityEngine.SceneManagement;
+using UnityEngine.SceneManagement;
 
 public class SalamandraController : MonoBehaviour
 {
@@ -45,7 +45,7 @@ public class SalamandraController : MonoBehaviour
         {
             Jump();
         }
-        else if((player1 && Input.GetKeyDown(KeyCode.Space)) || (!player1 && Input.GetKeyDown(KeyCode.I)))
+        else if((player1 && (Input.GetKeyDown(KeyCode.Space) || Input.GetAxis("Vertical")>0)) || (!player1 && Input.GetKeyDown(KeyCode.I)))
         {
             jumpSound.Play();
             jump = true;
@@ -107,6 +107,10 @@ public class SalamandraController : MonoBehaviour
         {
             playerGround = other.transform.position.y + other.transform.localScale.y*0.5f;
             // playerGround += transform.localScale.y*0.5f + other.transform.localScale.y*0.5f;
+        }
+        else if(other.gameObject.tag == "Victory")
+        {
+            SceneManager.LoadScene("VictoryScene");
         }
     }
 

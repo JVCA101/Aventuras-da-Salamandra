@@ -7,6 +7,7 @@ TagManager:
   - Platform
   - Enemy
   - Heart
+  - Victory
   layers:
   - Default
   - TransparentFX
