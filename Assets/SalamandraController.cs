@@ -43,8 +43,10 @@ public class SalamandraController : MonoBehaviour
         // timeDmg = 0f;
         // gotDamaged = false;
 
-        if(PlayerPrefs.GetInt("player2") == 0 && !player1)
+        if(PlayerPrefs.GetInt("player2") == 0 && !player1){
             gameObject.SetActive(false);
+            healthBar.SetActive(false);
+        }
     }
 
     // Update is called once per frame
