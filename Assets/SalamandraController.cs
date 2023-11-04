@@ -11,6 +11,8 @@ public class SalamandraController : MonoBehaviour
     [SerializeField] private int maxHealth = 3;
     [SerializeField] private float damageCooldown = 1.5f;
     [SerializeField] private bool player1;
+    [SerializeField] private GameObject healthBar;
+    private HealthController healthController;
     private AudioSource damageTakenSound;
     private AudioSource jumpSound;
 
@@ -42,9 +44,13 @@ public class SalamandraController : MonoBehaviour
         health = maxHealth;
         timeDmg = 0f;
         gotDamaged = false;
+        healthController = healthBar.GetComponentInChildren<HealthController>();
+        healthController.setMaxHealth(maxHealth);
 
-        if(PlayerPrefs.GetInt("player2") == 0 && !player1)
+        if(PlayerPrefs.GetInt("player2") == 0 && !player1){
             gameObject.SetActive(false);
+            healthBar.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -129,6 +135,7 @@ public class SalamandraController : MonoBehaviour
         {
             Debug.Log("Colidiu");
             damageTakenSound.Play();
+            healthController.TakeDamage(1f);
             health--;
             if(health<=0){
                 SceneManager.LoadScene("DeathScene");

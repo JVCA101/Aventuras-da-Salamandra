@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class HealthController : MonoBehaviour
 {
     [SerializeField] private Image healthBar;
-    private float maxHealth = 3f;
-    private float health = 3f;
+    private float maxHealth;
+    private float health;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +40,13 @@ public class HealthController : MonoBehaviour
     {
         health += heal;
         health = Mathf.Clamp(health, 0f, maxHealth);
+        healthBar.fillAmount = health / maxHealth;
+    }
+
+    public void setMaxHealth(float maxHealth)
+    {
+        this.maxHealth = maxHealth;
+        health = maxHealth;
         healthBar.fillAmount = health / maxHealth;
     }
 }
