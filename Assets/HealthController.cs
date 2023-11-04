@@ -2,44 +2,69 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class HealthController : MonoBehaviour
 {
-    [SerializeField] private Image healthBar;
-    private float maxHealth = 3f;
-    private float health = 3f;
+    [SerializeField] private Image[] hearts;
+    [SerializeField] private float damageCooldown = 1.5f;
+    [SerializeField] private Sprite fullHeart;
+    [SerializeField] private Sprite emptyHeart;
+
+    public int health = 3;
+    private int numOfHearts = 3;
+    private float timeDmg;
+    private bool gotDamaged;
+    private AudioSource damageTakenSound;
+    private SpriteRenderer spriteRenderer;
+    private Color originalColor;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        originalColor = spriteRenderer.color;
+        health = numOfHearts;
+        timeDmg = 0f;
+        gotDamaged = false;
+        damageTakenSound = GetComponents<AudioSource>()[0];
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(health <= 0f)
-        {
-            Debug.Log("You died!");
+        for(int i = 0; i < numOfHearts; i++)
+            if(i < health)
+                hearts[i].sprite = fullHeart;
+            else
+                hearts[i].sprite = emptyHeart;
+        
+        if(gotDamaged)
+            timeDmg += Time.deltaTime;
+        if(timeDmg >= damageCooldown){
+            timeDmg = 0f;
+            spriteRenderer.color = originalColor;
+            gotDamaged = false;
         }
-
-        if(Input.GetKeyDown(KeyCode.Delete))
-        {
-            TakeDamage(1f);
-        }
-        if(Input.GetKeyDown(KeyCode.Z))
-            Heal(1f);
     }
 
-    public void TakeDamage(float damage)
+    private void TakeDamage()
     {
-        health -= damage;
-        healthBar.fillAmount = health / maxHealth;
+        Debug.Log("Colidiu");
+        damageTakenSound.Play();
+        health--;
+        if(health<=0){
+            SceneManager.LoadScene("DeathScene");
+        }
+        spriteRenderer.color = new Color(1f, 1f, 1f, 0.9f);
+        gotDamaged = true;
     }
 
-    public void Heal(float heal)
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        health += heal;
-        health = Mathf.Clamp(health, 0f, maxHealth);
-        healthBar.fillAmount = health / maxHealth;
+        if(collision.gameObject.CompareTag("Enemy") && !gotDamaged)
+        {
+            TakeDamage();
+        }
     }
 }
