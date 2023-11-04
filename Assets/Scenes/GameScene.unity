@@ -494,7 +494,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -774,7 +774,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -768, y: 480}
+  m_AnchoredPosition: {x: -763, y: 297}
   m_SizeDelta: {x: 325.7117, y: 70.4504}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &232565261
@@ -4391,7 +4391,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -768, y: 480}
+  m_AnchoredPosition: {x: -762.99994, y: 297}
   m_SizeDelta: {x: 301.2833, y: 54.7947}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1453243154
@@ -5361,6 +5361,8 @@ MonoBehaviour:
   speed: 5
   impulse: 10
   gravity: 12
+  maxHealth: 3
+  damageCooldown: 3
   player1: 1
   ground: 0
 --- !u!61 &1805593312

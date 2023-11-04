@@ -33,4 +33,9 @@ public class ScenesController : MonoBehaviour
     {
         UnityEditor.EditorApplication.isPlaying = false;
     }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene("GameScene");
+    }
 }
