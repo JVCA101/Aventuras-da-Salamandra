@@ -3117,6 +3117,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5738470622414503290, guid: 13cc763515d525f47bca71501d090629, type: 3}
+      propertyPath: isPlayer1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5738470622414503290, guid: 13cc763515d525f47bca71501d090629, type: 3}
       propertyPath: hearts.Array.data[0]
       value: 
       objectReference: {fileID: 1899757071}
@@ -5447,7 +5451,6 @@ MonoBehaviour:
   impulse: 10
   gravity: 12
   player1: 1
-  healthBar: {fileID: 139352001}
   ground: 0
 --- !u!61 &1805593312
 BoxCollider2D:
@@ -5820,6 +5823,7 @@ MonoBehaviour:
   damageCooldown: 1.5
   fullHeart: {fileID: 21300000, guid: fed24bd82cefc0c4a8ef64dab6231b53, type: 3}
   emptyHeart: {fileID: 21300002, guid: fed24bd82cefc0c4a8ef64dab6231b53, type: 3}
+  isPlayer1: 1
   health: 3
 --- !u!1 &1818837702
 GameObject:
@@ -5856,7 +5860,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -885, y: 460}
+  m_AnchoredPosition: {x: -885, y: 279}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1871027984
@@ -6857,7 +6861,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 650, y: 460}
+  m_AnchoredPosition: {x: 650, y: 279.00003}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2047310305

@@ -8,10 +8,7 @@ public class SalamandraController : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float impulse;
     [SerializeField] private float gravity;
-    // [SerializeField] private int maxHealth = 3;
-    // [SerializeField] private float damageCooldown = 1.5f;
     [SerializeField] private bool player1;
-    // private AudioSource damageTakenSound;
     private AudioSource jumpSound;
 
 
@@ -19,9 +16,6 @@ public class SalamandraController : MonoBehaviour
     private float playerGround;
     private bool jump;
     private float ySpeed;
-    // private int health;
-    // private float timeDmg;
-    // private bool gotDamaged;
 
     private Vector2 direction;
     private Animator animator;
@@ -37,16 +31,10 @@ public class SalamandraController : MonoBehaviour
         direction = Vector2.right;
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        // damageTakenSound = GetComponents<AudioSource>()[0];
         jumpSound = GetComponents<AudioSource>()[1];
-        // health = maxHealth;
-        // timeDmg = 0f;
-        // gotDamaged = false;
 
         if(PlayerPrefs.GetInt("player2") == 0 && !player1){
             gameObject.SetActive(false);
-            
-            // healthBar.SetActive(false);
         }
     }
 
@@ -93,14 +81,6 @@ public class SalamandraController : MonoBehaviour
         float xMin = xMax - 2*(xMax - Camera.main.transform.position.x);
         if(transform.position.x + dx <= xMin || transform.position.x + dx >= xMax)
             dx = 0;
-
-        // if(gotDamaged)
-        //     timeDmg += Time.deltaTime;
-        // if(timeDmg >= damageCooldown){
-        //     timeDmg = 0f;
-        //     spriteRenderer.color = new Color(1f, 1f, 1f, 1f);
-        //     gotDamaged = false;
-        // }
         
         transform.Translate(dx, ySpeed * Time.deltaTime, 0);
     }
@@ -128,17 +108,6 @@ public class SalamandraController : MonoBehaviour
             playerGround = other.transform.position.y + other.transform.localScale.y*0.5f;
             // playerGround += transform.localScale.y*0.5f + other.transform.localScale.y*0.5f;
         }
-        // if(other.gameObject.tag == "Enemy" && !gotDamaged)
-        // {
-        //     Debug.Log("Colidiu");
-        //     damageTakenSound.Play();
-        //     health--;
-        //     if(health<=0){
-        //         SceneManager.LoadScene("DeathScene");
-        //     }
-        //     spriteRenderer.color = new Color(1f, 1f, 1f, 0.9f);
-        //     gotDamaged = true;
-        // }
     }
 
     void OnCollisionExit2D(Collision2D other)

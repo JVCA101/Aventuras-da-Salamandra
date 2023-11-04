@@ -10,6 +10,7 @@ public class HealthController : MonoBehaviour
     [SerializeField] private float damageCooldown = 1.5f;
     [SerializeField] private Sprite fullHeart;
     [SerializeField] private Sprite emptyHeart;
+    [SerializeField] private bool isPlayer1 = true;
 
     public int health = 3;
     private int numOfHearts = 3;
@@ -28,6 +29,10 @@ public class HealthController : MonoBehaviour
         timeDmg = 0f;
         gotDamaged = false;
         damageTakenSound = GetComponents<AudioSource>()[0];
+        if(PlayerPrefs.GetInt("player2") == 0 && !isPlayer1){
+            for(int i =0; i < numOfHearts; i++)
+                hearts[i].color = new Color(1f, 1f, 1f, 0f);
+        }
     }
 
     // Update is called once per frame
