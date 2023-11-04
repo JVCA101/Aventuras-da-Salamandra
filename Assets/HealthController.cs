@@ -67,11 +67,4 @@ public class HealthController : MonoBehaviour
             TakeDamage();
         }
     }
-
-    public void setMaxHealth(float maxHealth)
-    {
-        this.maxHealth = maxHealth;
-        health = maxHealth;
-        healthBar.fillAmount = health / maxHealth;
-    }
 }

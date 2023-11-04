@@ -45,7 +45,8 @@ public class SalamandraController : MonoBehaviour
 
         if(PlayerPrefs.GetInt("player2") == 0 && !player1){
             gameObject.SetActive(false);
-            healthBar.SetActive(false);
+            
+            // healthBar.SetActive(false);
         }
     }
 
