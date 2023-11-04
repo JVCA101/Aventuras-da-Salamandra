@@ -65,11 +65,23 @@ public class HealthController : MonoBehaviour
         gotDamaged = true;
     }
 
+    private void RestoreHeart()
+    {
+        Debug.Log("Colidiu");
+        hearts[health].sprite = fullHeart;
+        health++;
+    }
+
     void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.CompareTag("Enemy") && !gotDamaged)
         {
             TakeDamage();
+        }
+        if(collision.gameObject.CompareTag("Heart") && health < numOfHearts)
+        {
+            RestoreHeart();
+            collision.gameObject.SetActive(false);
         }
     }
 }
