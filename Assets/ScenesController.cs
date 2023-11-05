@@ -20,7 +20,6 @@ public class ScenesController : MonoBehaviour
     public void StartGame(bool player2)
     {
         SceneManager.LoadScene("GameScene");
-        // playerPrefs
         PlayerPrefs.SetInt("player2", player2 ? 1 : 0);
     }
 
@@ -32,10 +31,5 @@ public class ScenesController : MonoBehaviour
     public void QuitGame()
     {
         UnityEditor.EditorApplication.isPlaying = false;
-    }
-
-    public void RestartGame()
-    {
-        SceneManager.LoadScene("GameScene");
     }
 }
