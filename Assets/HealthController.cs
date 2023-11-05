@@ -17,6 +17,7 @@ public class HealthController : MonoBehaviour
     private float timeDmg;
     private bool gotDamaged;
     private AudioSource damageTakenSound;
+    private AudioSource heartTakenSound;
     private SpriteRenderer spriteRenderer;
     private Color originalColor;
 
@@ -29,6 +30,7 @@ public class HealthController : MonoBehaviour
         timeDmg = 0f;
         gotDamaged = false;
         damageTakenSound = GetComponents<AudioSource>()[0];
+        heartTakenSound = GetComponents<AudioSource>()[1];
         if(PlayerPrefs.GetInt("player2") == 0 && !isPlayer1){
             for(int i =0; i < numOfHearts; i++)
                 hearts[i].color = new Color(1f, 1f, 1f, 0f);
@@ -80,6 +82,7 @@ public class HealthController : MonoBehaviour
         }
         if(collision.gameObject.CompareTag("Heart") && health < numOfHearts)
         {
+            heartTakenSound.Play();
             RestoreHeart();
             collision.gameObject.SetActive(false);
         }

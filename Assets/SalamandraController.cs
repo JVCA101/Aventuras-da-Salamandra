@@ -31,7 +31,7 @@ public class SalamandraController : MonoBehaviour
         direction = Vector2.right;
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        jumpSound = GetComponents<AudioSource>()[1];
+        jumpSound = GetComponents<AudioSource>()[2];
 
         if(PlayerPrefs.GetInt("player2") == 0 && !player1){
             gameObject.SetActive(false);
