@@ -8,12 +8,11 @@ public class SalamandraController : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float impulse;
     [SerializeField] private float gravity;
+    [SerializeField] private float ground;
     [SerializeField] private bool player1;
-    private AudioSource jumpSound;
 
-
-    public float ground;
     private float playerGround;
+    private AudioSource jumpSound;
     private bool jump;
     private float ySpeed;
 
@@ -107,7 +106,6 @@ public class SalamandraController : MonoBehaviour
         && other.transform.position.y + other.transform.localScale.y*0.5 <= transform.position.y)
         {
             playerGround = other.transform.position.y + other.transform.localScale.y*0.5f;
-            // playerGround += transform.localScale.y*0.5f + other.transform.localScale.y*0.5f;
         }
         else if(other.gameObject.tag == "Victory")
         {

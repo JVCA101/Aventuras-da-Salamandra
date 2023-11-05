@@ -37,6 +37,7 @@ public class CameraController : MonoBehaviour
         transform.position = new Vector3(x, leftEdge.position.y+halfHeight, transform.position.z);
     }
 
+
     // Single Player
 
     void FollowPlayerCenteredInOneSideX()
@@ -78,6 +79,7 @@ public class CameraController : MonoBehaviour
         FollowPlayerCenteredInOneSideX();
         FollowPlayerY();
     }
+
 
     // Multiplayer
 

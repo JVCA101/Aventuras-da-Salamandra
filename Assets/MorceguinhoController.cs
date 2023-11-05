@@ -81,9 +81,15 @@ public class MorceguinhoController : MonoBehaviour
     private void CircularMovement(){
         float x = Mathf.Cos(Time.time*oscilationSpeed)*hSpeed;
         float y = Mathf.Sin(Time.time*oscilationSpeed)*vSpeed;
-        Vector2 newPos = transform.position;
+        Vector2 newPos;
         newPos.x = initialX + x;
         newPos.y = initialY + y;
+
+        if(y < 0)
+            spriteRenderer.flipX = false;
+        else
+            spriteRenderer.flipX = true;
+
         transform.position = newPos;
     }
 }
