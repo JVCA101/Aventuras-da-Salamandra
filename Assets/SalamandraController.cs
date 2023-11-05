@@ -103,7 +103,8 @@ public class SalamandraController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.gameObject.tag == "Platform" && ySpeed <= 0)
+        if(other.gameObject.tag == "Platform" && ySpeed <= 0 
+        && other.transform.position.y + other.transform.localScale.y*0.5 <= transform.position.y)
         {
             playerGround = other.transform.position.y + other.transform.localScale.y*0.5f;
             // playerGround += transform.localScale.y*0.5f + other.transform.localScale.y*0.5f;
@@ -116,7 +117,7 @@ public class SalamandraController : MonoBehaviour
 
     void OnCollisionExit2D(Collision2D other)
     {
-        if(other.gameObject.tag == "Platform" && ySpeed <= 0)
+        if(other.gameObject.tag == "Platform")
         {
             playerGround = ground;
             jump = true;
